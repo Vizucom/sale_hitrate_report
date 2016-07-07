@@ -1,0 +1,84 @@
+<openerp>
+	<data>
+		<record id="hitrate_report_form_view" model="ir.ui.view">
+			<field name="name">sale_hitrate_report.form.view</field>
+			<field name="model">sale_hitrate_report.report</field>
+			<field name="arch" type="xml">
+				<form string="Hitrate Report" version="7.0">
+					<header></header>
+					<sheet>
+						<h1>
+							<field name="name" class="oe_inline" readonly="1"/>
+						</h1>
+
+						<group>
+							<group string="Parameters">
+								<field name="company_id" widget="selection"/>
+								<field name="date_start"/>
+								<field name="date_end"/>
+							</group>
+							<group string="Results">
+								<field name="sale_count"/>
+								<field name="non_sale_count"/>
+								<field name="hitrate"/>
+							</group>
+						</group>
+
+						<notebook>
+							<page string="Sale Details">
+								<field name="sale_ids">
+									<tree>
+										<field name="date_order"/>
+										<field name="name"/>
+										<field name="partner_id"/>
+										<field name="user_id"/>
+										<field name="amount_total"/>
+										<field name="state"/>
+									</tree>
+								</field>
+							</page>
+							<page string="Non-sale Details">
+								<field name="non_sale_ids">
+									<tree>
+										<field name="date_order"/>
+										<field name="name"/>
+										<field name="partner_id"/>
+										<field name="user_id"/>
+										<field name="amount_total"/>
+										<field name="state"/>
+									</tree>
+								</field>
+							</page>
+							<page string="Internal notes">
+								<field name="notes"/>
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="hitrate_report_tree_view" model="ir.ui.view">
+			<field name="name">sale_hitrate_report.tree.view</field>
+			<field name="model">sale_hitrate_report.report</field>
+			<field name="arch" type="xml">
+				<tree string="Hitrate Report">
+					<field name="name"/>
+					<field name="company_id"/>
+					<field name="date_start"/>
+					<field name="date_end"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="hitrate_reports_action" model="ir.actions.act_window">
+			<field name="name">Hitrate Reports</field>
+			<field name="res_model">sale_hitrate_report.report</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<menuitem id="hitrate_report_main_menu" name="Hitrate Report" parent="base.menu_base_partner" sequence="10"/>
+		<menuitem id="hitrate_report_reports_menu" name="Reports" parent="hitrate_report_main_menu" action="hitrate_reports_action" sequence="1"/>
+
+	</data>
+</openerp>
