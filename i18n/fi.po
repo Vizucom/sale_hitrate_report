@@ -1,0 +1,131 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* sale_hitrate_report
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-07-07 11:50+0000\n"
+"PO-Revision-Date: 2016-07-07 11:50+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sale_hitrate_report
+#: field:sale_hitrate_report.report,company_id:0
+msgid "Company"
+msgstr "Yritys"
+
+#. module: sale_hitrate_report
+#: field:sale_hitrate_report.report,currency_id:0
+msgid "Currency"
+msgstr "Valuutta"
+
+#. module: sale_hitrate_report
+#: field:sale_hitrate_report.report,date_end:0
+msgid "End date"
+msgstr "Loppupvm"
+
+#. module: sale_hitrate_report
+#: field:sale_hitrate_report.report,hitrate:0
+msgid "Hit rate (%)"
+msgstr "Hit rate (%)"
+
+#. module: sale_hitrate_report
+#: code:_description:0
+#: model:ir.model,name:sale_hitrate_report.model_sale_hitrate_report_report
+#: model:ir.ui.menu,name:sale_hitrate_report.hitrate_report_main_menu
+#: view:sale_hitrate_report.report:0
+#, python-format
+msgid "Hitrate Report"
+msgstr "Hitrate-raportti"
+
+#. module: sale_hitrate_report
+#: model:ir.actions.act_window,name:sale_hitrate_report.hitrate_reports_action
+msgid "Hitrate Reports"
+msgstr "Hitrate-raportit"
+
+#. module: sale_hitrate_report
+#: view:sale_hitrate_report.report:0
+msgid "Internal notes"
+msgstr "Muistiinpanot"
+
+#. module: sale_hitrate_report
+#: field:sale_hitrate_report.report,name:0
+msgid "Name"
+msgstr "Nimi"
+
+#. module: sale_hitrate_report
+#: view:sale_hitrate_report.report:0
+msgid "Non-sale Details"
+msgstr "Toteutumattomat myynnit"
+
+#. module: sale_hitrate_report
+#: field:sale_hitrate_report.report,non_sale_totals:0
+msgid "Non-sale Totals"
+msgstr "Toteutumattomat myynnit yhteensä"
+
+#. module: sale_hitrate_report
+#: field:sale_hitrate_report.report,non_sale_count:0
+msgid "Non-sale count"
+msgstr "Toteutumattomien lkm"
+
+#. module: sale_hitrate_report
+#: field:sale_hitrate_report.report,non_sale_ids:0
+msgid "Non-sales"
+msgstr "Toteutumattomat"
+
+#. module: sale_hitrate_report
+#: field:sale_hitrate_report.report,notes:0
+msgid "Notes"
+msgstr "Muistiinpanot"
+
+#. module: sale_hitrate_report
+#: view:sale_hitrate_report.report:0
+msgid "Parameters"
+msgstr "Hakuehdot"
+
+#. module: sale_hitrate_report
+#: model:ir.ui.menu,name:sale_hitrate_report.hitrate_report_reports_menu
+msgid "Reports"
+msgstr "Raportit"
+
+#. module: sale_hitrate_report
+#: view:sale_hitrate_report.report:0
+msgid "Results"
+msgstr "Tulokset"
+
+#. module: sale_hitrate_report
+#: view:sale_hitrate_report.report:0
+msgid "Sale Details"
+msgstr "Toteutuneet myynnit"
+
+#. module: sale_hitrate_report
+#: field:sale_hitrate_report.report,sale_totals:0
+msgid "Sale Totals"
+msgstr "Toteutuneet myynnit yhteensä"
+
+#. module: sale_hitrate_report
+#: field:sale_hitrate_report.report,sale_count:0
+msgid "Sale count"
+msgstr "Toteutuneiden lkm"
+
+#. module: sale_hitrate_report
+#: field:sale_hitrate_report.report,sale_ids:0
+msgid "Sales"
+msgstr "Toteutuneet myynnit"
+
+#. module: sale_hitrate_report
+#: field:sale_hitrate_report.report,date_start:0
+msgid "Start date"
+msgstr "Alkupvm"
+
+#. module: sale_hitrate_report
+#: view:sale_hitrate_report.report:0
+msgid "Total"
+msgstr "Yhteensä"
+

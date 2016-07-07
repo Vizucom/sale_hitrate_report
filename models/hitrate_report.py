@@ -42,7 +42,11 @@ class HitrateReport(osv.Model):
             non_sale_domain = self._form_non_sale_domain(report)
             non_sale_ids = sale_order_model.search(cr, uid, args=non_sale_domain)
             non_sale_count = float(len(non_sale_ids))
-            hitrate = sale_count / (sale_count + non_sale_count) * 100
+
+            if sale_count > 0 or non_sale_count > 0:
+                hitrate = sale_count / (sale_count + non_sale_count) * 100
+            else:
+                hitrate = 0.00
 
             sale_totals = 0.00
             non_sale_totals = 0.00
@@ -54,6 +58,7 @@ class HitrateReport(osv.Model):
                 non_sale_totals += nso.amount_total
 
             result[report.id] = {
+                'name': '{}, {} - {} ({})'.format(report.company_id.name, report.date_start, report.date_end, report.currency_id.name),
                 'sale_ids': sale_ids,
                 'sale_count': sale_count,
                 'sale_totals': sale_totals,
@@ -66,7 +71,7 @@ class HitrateReport(osv.Model):
         return result
 
     _columns = {
-        'name': fields.char('Name'),
+        'name': fields.function(_generate_report, string="Name", type="char", multi="report_calc"),
         'date_start': fields.date('Start date', required=True),
         'date_end': fields.date('End date', required=True),
         'company_id': fields.many2one('res.company', 'Company', required=True),

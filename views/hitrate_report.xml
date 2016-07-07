@@ -22,8 +22,8 @@
 								<field name="sale_count"/>
 								<field name="non_sale_count"/>
 								<field name="hitrate"/>
-								<field name="sale_totals"/>
-								<field name="non_sale_totals"/>
+								<field name="sale_totals" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+								<field name="non_sale_totals" widget="monetary" options="{'currency_field': 'currency_id'}"/>
 							</group>
 						</group>
 
@@ -72,6 +72,7 @@
 					<field name="company_id"/>
 					<field name="date_start"/>
 					<field name="date_end"/>
+					<field name="hitrate"/>
 				</tree>
 			</field>
 		</record>
