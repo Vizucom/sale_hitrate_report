@@ -27,6 +27,7 @@ Hitrate Report
 
 """,
     'data': [
-    	'views/hitrate_report.xml',
+        'views/hitrate_report.xml',
+        'security/ir.model.access.csv',
     ],
 }
