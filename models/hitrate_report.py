@@ -21,7 +21,7 @@ class HitrateReport(osv.Model):
     def _form_non_sale_domain(self, report):
         '''You can override this method to customize the results.'''
         domain = [('company_id', '=', report.company_id.id),
-                  ('currency_id', '=', report.currency_id.id),        
+                  ('currency_id', '=', report.currency_id.id),
                   ('date_order', '>=', report.date_start),
                   ('date_order', '<=', report.date_end),
                   ('state', 'not in', ['progress', 'manual', 'invoice_except', 'shipping_except', 'done'])]
@@ -42,14 +42,24 @@ class HitrateReport(osv.Model):
             non_sale_domain = self._form_non_sale_domain(report)
             non_sale_ids = sale_order_model.search(cr, uid, args=non_sale_domain)
             non_sale_count = float(len(non_sale_ids))
-
             hitrate = sale_count / (sale_count + non_sale_count) * 100
+
+            sale_totals = 0.00
+            non_sale_totals = 0.00
+
+            for so in sale_order_model.browse(cr, uid, sale_ids, context):
+                sale_totals += so.amount_total
+
+            for nso in sale_order_model.browse(cr, uid, non_sale_ids, context):
+                non_sale_totals += nso.amount_total
 
             result[report.id] = {
                 'sale_ids': sale_ids,
                 'sale_count': sale_count,
+                'sale_totals': sale_totals,
                 'non_sale_ids': non_sale_ids,
                 'non_sale_count': non_sale_count,
+                'non_sale_totals': non_sale_totals,
                 'hitrate': hitrate,
             }
 
@@ -65,6 +75,9 @@ class HitrateReport(osv.Model):
 
         'sale_count': fields.function(_generate_report, string="Sale count", type="integer", multi="report_calc"),
         'non_sale_count': fields.function(_generate_report, string="Non-sale count", type="integer", multi="report_calc"),
+        'sale_totals': fields.function(_generate_report, string="Sale Totals", type="float", multi="report_calc"),
+        'non_sale_totals': fields.function(_generate_report, string="Non-sale Totals", type="float", multi="report_calc"),
+
         'hitrate': fields.function(_generate_report, string="Hit rate (%)", type="float", multi="report_calc"),
         'sale_ids': fields.function(_generate_report,
                                     relation='sale.order',

@@ -22,6 +22,8 @@
 								<field name="sale_count"/>
 								<field name="non_sale_count"/>
 								<field name="hitrate"/>
+								<field name="sale_totals"/>
+								<field name="non_sale_totals"/>
 							</group>
 						</group>
 
@@ -33,7 +35,7 @@
 										<field name="name"/>
 										<field name="partner_id"/>
 										<field name="user_id"/>
-										<field name="amount_total"/>
+										<field name="amount_total" sum="Total"/>
 										<field name="currency_id"/>
 										<field name="state"/>
 									</tree>
@@ -46,7 +48,7 @@
 										<field name="name"/>
 										<field name="partner_id"/>
 										<field name="user_id"/>
-										<field name="amount_total"/>
+										<field name="amount_total" sum="Total"/>
 										<field name="currency_id"/>
 										<field name="state"/>
 									</tree>
