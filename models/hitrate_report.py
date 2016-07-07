@@ -12,6 +12,7 @@ class HitrateReport(osv.Model):
     def _form_sale_domain(self, report):
         '''You can override this method to customize the results.'''
         domain = [('company_id', '=', report.company_id.id),
+                  ('currency_id', '=', report.currency_id.id),
                   ('date_order', '>=', report.date_start),
                   ('date_order', '<=', report.date_end),
                   ('state', 'in', ['progress', 'manual', 'invoice_except', 'shipping_except', 'done'])]
@@ -20,6 +21,7 @@ class HitrateReport(osv.Model):
     def _form_non_sale_domain(self, report):
         '''You can override this method to customize the results.'''
         domain = [('company_id', '=', report.company_id.id),
+                  ('currency_id', '=', report.currency_id.id),        
                   ('date_order', '>=', report.date_start),
                   ('date_order', '<=', report.date_end),
                   ('state', 'not in', ['progress', 'manual', 'invoice_except', 'shipping_except', 'done'])]
@@ -58,6 +60,7 @@ class HitrateReport(osv.Model):
         'date_start': fields.date('Start date', required=True),
         'date_end': fields.date('End date', required=True),
         'company_id': fields.many2one('res.company', 'Company', required=True),
+        'currency_id': fields.many2one('res.currency', 'Currency', required=True),
         'notes': fields.text('Notes'),
 
         'sale_count': fields.function(_generate_report, string="Sale count", type="integer", multi="report_calc"),
@@ -78,6 +81,7 @@ class HitrateReport(osv.Model):
 
     _defaults = {
         'company_id': lambda self,cr,uid,context: self.pool.get('res.users').browse(cr,uid,uid,context).company_id.id,
+        'currency_id': lambda self,cr,uid,context: self.pool.get('res.users').browse(cr,uid,uid,context).company_id.currency_id.id,
         'date_start': lambda self,cr,uid,context: '{0}-01-01'.format(str(datetime.now().year)),
         'date_end': lambda self,cr,uid,context: '{0}-12-31'.format(str(datetime.now().year)),
     }
